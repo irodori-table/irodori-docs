@@ -6,8 +6,8 @@ language = "en"
 src = "src"
 
 [output.html]
-git-repository-url = "https://github.com/hjosugi/irodori-docs"
-edit-url-template = "https://github.com/hjosugi/irodori-docs/edit/main/{path}"
+git-repository-url = "https://github.com/irodori-table/irodori-docs"
+edit-url-template = "https://github.com/irodori-table/irodori-docs/edit/main/{path}"
 site-url = "/irodori-docs/"
 default-theme = "light"
 preferred-dark-theme = "navy"

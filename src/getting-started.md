@@ -6,7 +6,7 @@ architecture notes.
 ## Install
 
 Download the current desktop build from
-<https://github.com/hjosugi/irodori-table/releases>. The Linux build is the most
+<https://github.com/irodori-table/irodori-table/releases>. The Linux build is the most
 actively exercised preview target.
 
 For source builds, use the platform development guide for your OS instead of the

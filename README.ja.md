@@ -7,7 +7,7 @@ Irodori Tableの公開ドキュメントサイト。
 
 オンラインで読む：
 
-<https://hjosugi.github.io/irodori-docs/>
+<https://irodori-table.github.io/irodori-docs/>
 
 ## 開発
 

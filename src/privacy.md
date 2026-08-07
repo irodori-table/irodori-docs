@@ -76,4 +76,4 @@ workspaces, generated cache files, and any saved OS keychain entries for the
 
 Use the public support channels in [support.md](support.md). For suspected
 security issues, follow the
-[security policy](https://github.com/hjosugi/irodori-table/blob/main/SECURITY.md).
+[security policy](https://github.com/irodori-table/irodori-table/blob/main/SECURITY.md).

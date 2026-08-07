@@ -1,7 +1,7 @@
 # Knowledge Refresh Report
 
 Mirrored from the `irodori-table` generated report
-[`registry/knowledge-refresh-report.md`](https://github.com/hjosugi/irodori-table/blob/main/registry/knowledge-refresh-report.md),
+[`registry/knowledge-refresh-report.md`](https://github.com/irodori-table/irodori-table/blob/main/registry/knowledge-refresh-report.md),
 produced by the monthly scheduled knowledge refresh (`knowledge-refresh.yml`,
 1st of each month). The source of truth is the table repo; this mirror is
 refreshed automatically by `knowledge-report-sync.yml` (daily check and

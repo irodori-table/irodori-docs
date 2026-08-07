@@ -71,7 +71,7 @@ For the headless local HTTP API, install `irodori-server` from the last
 `irodori-kit` tag that shipped it as a workspace package:
 
 ```bash
-cargo install --git https://github.com/hjosugi/irodori-kit --tag v0.5.0 --locked irodori-server
+cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.5.0 --locked irodori-server
 ```
 
 The old `irodori-table` repo command is no longer correct because

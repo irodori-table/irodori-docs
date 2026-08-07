@@ -19,15 +19,15 @@ Current public release state:
 | Product name | Irodori Table |
 | Generic name | SQL workbench / database client |
 | App identifier | `dev.irodori.table` |
-| Repository | <https://github.com/hjosugi/irodori-table> |
-| Homepage | <https://hjosugi.github.io/irodori-docs/> |
-| Releases | <https://github.com/hjosugi/irodori-table/releases> |
-| Documentation | <https://hjosugi.github.io/irodori-docs/> |
-| Support URL | <https://hjosugi.github.io/irodori-docs/support.html> |
-| Privacy URL | <https://hjosugi.github.io/irodori-docs/privacy.html> |
-| Disclaimer URL | <https://hjosugi.github.io/irodori-docs/disclaimer.html> |
+| Repository | <https://github.com/irodori-table/irodori-table> |
+| Homepage | <https://irodori-table.github.io/irodori-docs/> |
+| Releases | <https://github.com/irodori-table/irodori-table/releases> |
+| Documentation | <https://irodori-table.github.io/irodori-docs/> |
+| Support URL | <https://irodori-table.github.io/irodori-docs/support.html> |
+| Privacy URL | <https://irodori-table.github.io/irodori-docs/privacy.html> |
+| Disclaimer URL | <https://irodori-table.github.io/irodori-docs/disclaimer.html> |
 | License | `MIT OR 0BSD` |
-| Source license URL | <https://github.com/hjosugi/irodori-table/blob/main/LICENSE> |
+| Source license URL | <https://github.com/irodori-table/irodori-table/blob/main/LICENSE> |
 | Category | Developer Tools, Database, Productivity |
 | Age rating baseline | Developer tool; no user-generated public content |
 | Paid content | None |
@@ -108,9 +108,9 @@ Keywords:
 
 These pages are published from this mdBook by GitHub Pages:
 
-- <https://hjosugi.github.io/irodori-docs/support.html>
-- <https://hjosugi.github.io/irodori-docs/privacy.html>
-- <https://hjosugi.github.io/irodori-docs/disclaimer.html>
+- <https://irodori-table.github.io/irodori-docs/support.html>
+- <https://irodori-table.github.io/irodori-docs/privacy.html>
+- <https://irodori-table.github.io/irodori-docs/disclaimer.html>
 
 The corresponding editable Markdown sources are:
 
@@ -226,7 +226,7 @@ Status: later.
 The current git install path is:
 
 ```bash
-cargo install --git https://github.com/hjosugi/irodori-kit --tag v0.5.0 --locked irodori-server
+cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.5.0 --locked irodori-server
 ```
 
 crates.io publication requires all `irodori-*` git/path dependencies to be

@@ -53,7 +53,7 @@ workflow still needs to discover it from this repository.
 This repo expects the samples repo as a sibling checkout by default:
 
 ```sh
-git clone https://github.com/hjosugi/irodori-samples ../irodori-samples
+git clone https://github.com/irodori-table/irodori-samples ../irodori-samples
 ```
 
 Override the location with `IRODORI_SAMPLES=/path/to/irodori-samples`.
@@ -92,7 +92,7 @@ or app-consumed source needs it.
 Use
 [parallel-agent-architecture](parallel-agent-architecture.md)
 and
-[agent-workstreams.json](https://github.com/hjosugi/irodori-table/blob/main/registry/agent-workstreams.json)
+[agent-workstreams.json](https://github.com/irodori-table/irodori-table/blob/main/registry/agent-workstreams.json)
 when assigning work to
 multiple coding agents. The default split is:
 

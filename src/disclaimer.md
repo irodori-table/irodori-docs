@@ -43,5 +43,5 @@ handling, and access controls are governed by the relevant third party.
 
 Project-authored code is licensed under `MIT OR 0BSD` unless a file says
 otherwise. The software is provided without warranty. See the
-[license](https://github.com/hjosugi/irodori-table/blob/main/LICENSE) for the
+[license](https://github.com/irodori-table/irodori-table/blob/main/LICENSE) for the
 controlling license text.

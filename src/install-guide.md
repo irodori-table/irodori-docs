@@ -6,7 +6,7 @@ state checked for this guide is:
 - latest stable GitHub Release: `v0.7.32`, published on 2026-07-05;
 - latest lightweight prerelease: `v0.7.34`, published on 2026-07-08.
 
-<https://github.com/hjosugi/irodori-table/releases>
+<https://github.com/irodori-table/irodori-table/releases>
 
 The current `v0.7.x` release lane publishes a Linux AppImage only. Windows,
 macOS, updater, `.deb`, and `.rpm` artifacts are intentionally omitted until the
@@ -88,7 +88,7 @@ headless server from the last `irodori-kit` tag that shipped it as a workspace
 package:
 
 ```bash
-cargo install --git https://github.com/hjosugi/irodori-kit --tag v0.5.0 --locked irodori-server
+cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.5.0 --locked irodori-server
 ```
 
 See [Headless local data API](headless-data-api.md) for runtime configuration.

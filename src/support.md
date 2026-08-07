@@ -6,12 +6,12 @@ and the project site.
 
 ## Public support channels
 
-- Project site: <https://hjosugi.github.io/irodori-docs/>
-- Documentation: <https://hjosugi.github.io/irodori-docs/>
-- Releases: <https://github.com/hjosugi/irodori-table/releases>
-- Issues: <https://github.com/hjosugi/irodori-table/issues>
+- Project site: <https://irodori-table.github.io/irodori-docs/>
+- Documentation: <https://irodori-table.github.io/irodori-docs/>
+- Releases: <https://github.com/irodori-table/irodori-table/releases>
+- Issues: <https://github.com/irodori-table/irodori-table/issues>
 - Security reports: follow the
-  [security policy](https://github.com/hjosugi/irodori-table/blob/main/SECURITY.md)
+  [security policy](https://github.com/irodori-table/irodori-table/blob/main/SECURITY.md)
 
 For suspected vulnerabilities, do not open a public issue with exploit details,
 credentials, database dumps, connection strings, customer data, or private logs.

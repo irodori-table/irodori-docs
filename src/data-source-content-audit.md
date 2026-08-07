@@ -23,7 +23,7 @@ DuckDB, MotherDuck, PostgreSQL, SQLite.
 ## Systemic findings
 
 1. **All 36 connector repos were empty stubs marked `verified:true`.** Every
-   `github.com/hjosugi/irodori-extension-*` returned "This repository is empty"
+   `github.com/irodori-table/irodori-extension-*` returned "This repository is empty"
    (0 commits) yet `catalog.json` listed each `verified:true`, `version:"0.1.0"`,
    `runtime:"native"`. There is also no extension host wired in the app yet, so
    nothing loads. → `verified:true` is unsubstantiated; set `false` until the

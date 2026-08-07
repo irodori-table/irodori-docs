@@ -70,7 +70,7 @@ Sample database containers live in the sibling `irodori-samples` repository.
 Clone it next to `irodori-table` when you need local integration fixtures:
 
 ```powershell
-git clone https://github.com/hjosugi/irodori-samples ../irodori-samples
+git clone https://github.com/irodori-table/irodori-samples ../irodori-samples
 ```
 
 Then use Docker Desktop or Podman Desktop as the container engine.

@@ -1,7 +1,7 @@
 # Implementation Architecture
 
 This document explains the implementation shape of the
-[`irodori-table`](https://github.com/hjosugi/irodori-table) repository. It is
+[`irodori-table`](https://github.com/irodori-table/irodori-table) repository. It is
 intentionally practical: use it to decide which directory owns a change, how
 frontend code reaches Rust, and where shared logic should live.
 
@@ -307,7 +307,7 @@ Parallel work is organized around explicit workstreams rather than informal file
 ownership. The detailed policy lives in
 [`parallel-agent-architecture.md`](parallel-agent-architecture.md), and the
 machine-readable source is
-[`registry/agent-workstreams.json`](https://github.com/hjosugi/irodori-table/blob/main/registry/agent-workstreams.json).
+[`registry/agent-workstreams.json`](https://github.com/irodori-table/irodori-table/blob/main/registry/agent-workstreams.json).
 
 The key split is:
 

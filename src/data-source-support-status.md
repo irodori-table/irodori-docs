@@ -7,7 +7,7 @@ This is the single inventory of **what Irodori connects to today vs. what is
 declared, planned, or not yet started**. The authoritative source of truth is the
 `DbEngine` registry in `apps/desktop/src-tauri/src/db/engine.rs` and the connect
 dispatch in `apps/desktop/src-tauri/src/db.rs`. Roadmap intent lives in
-<https://hjosugi.github.io/irodori-docs/data-source-coverage-strategy.html>;
+<https://irodori-table.github.io/irodori-docs/data-source-coverage-strategy.html>;
 this file reconciles intent against the code.
 
 Managed-service verification procedures live outside the public user path; keep

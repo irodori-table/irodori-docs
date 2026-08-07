@@ -6,7 +6,7 @@ contracts, connector agents own one connector repository each, and a coordinator
 serializes registry and generated-catalog changes.
 
 The machine-readable workstream definition lives in
-[`registry/agent-workstreams.json`](https://github.com/hjosugi/irodori-table/blob/main/registry/agent-workstreams.json).
+[`registry/agent-workstreams.json`](https://github.com/irodori-table/irodori-table/blob/main/registry/agent-workstreams.json).
 Validate it from an `irodori-table` checkout with:
 
 ```sh

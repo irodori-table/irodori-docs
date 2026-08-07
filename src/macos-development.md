@@ -56,7 +56,7 @@ Use `cargo test --workspace` for Rust backend changes.
 Sample database containers live in the sibling `irodori-samples` repository:
 
 ```bash
-git clone https://github.com/hjosugi/irodori-samples ../irodori-samples
+git clone https://github.com/irodori-table/irodori-samples ../irodori-samples
 make db-up DB=postgres
 make db-verify DB=postgres
 ```
