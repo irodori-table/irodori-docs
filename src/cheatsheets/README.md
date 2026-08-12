@@ -5,8 +5,10 @@
 
 One page per database that answers, fast: **how do I connect from Irodori, what is
 the query model, and what are the per-engine quirks I will trip on.** These are the
-human-facing, copy-pasteable companion to the deeper `docs/engine-syntax-reference.md`
-(driver/decoding internals) and `docs/data-source-support-status.md` (coverage).
+human-facing, copy-pasteable companion to the deeper
+[engine syntax reference](../engine-syntax-reference.md) (driver/decoding
+internals) and [data-source support status](../data-source-support-status.md)
+(coverage).
 
 Each cheatsheet is meant to be **generated** from the local knowledge inputs in
 `irodori-table` (`knowledge/cheatsheets/*.json` plus the knowledge DB). Until a
@@ -18,19 +20,41 @@ ownership and drift rules are tracked in
 
 | Cheatsheet | Engine(s) covered | Status |
 |---|---|---|
-| [neo4j.md](neo4j.md) | Neo4j (graph, Bolt/Cypher); Memgraph notes | Seed (flagship) |
-| [postgres.md](postgres.md) | PostgreSQL (+ Cockroach/Yugabyte/Redshift/Timescale/Neon) | Generated (`knowledge/cheatsheets/postgres.json`) |
+| [neo4j.md](neo4j.md) | Neo4j (graph, Bolt/Cypher); Memgraph extension notes | Seed (flagship graph/Bolt page) |
+| [postgres.md](postgres.md) | PostgreSQL (+ Cockroach/Yugabyte/Redshift/Timescale/Neon; H2 wire notes) | Generated (`knowledge/cheatsheets/postgres.json`) |
 | [questdb.md](questdb.md) | QuestDB (Postgres wire + time-series SQL extensions) | Seed |
 | _mysql.md_ | MySQL / MariaDB / TiDB | Planned |
 | _sqlite.md_ | SQLite | Planned |
+| _oracle.md_ | Oracle | Planned |
 | _sqlserver.md_ | SQL Server | Planned |
-| _duckdb.md_ | DuckDB | Planned |
+| _duckdb.md_ | DuckDB / MotherDuck | Planned |
 | _mongodb.md_ | MongoDB | Planned |
+| _redis.md_ | Redis | Planned |
+| _cassandra.md_ | Cassandra / ScyllaDB | Planned |
+| _clickhouse.md_ | ClickHouse | Planned |
+| _snowflake.md_ | Snowflake | Planned |
+| _bigquery.md_ | BigQuery | Planned |
+| _bigtable.md_ | Bigtable | Planned |
+| _influxdb.md_ | InfluxDB | Planned |
 
 New cheatsheets are added only for engines that are at least **Wired** in
-`docs/data-source-support-status.md`. An engine that is "Recognized, no connector"
+[`data-source-support-status.md`](../data-source-support-status.md). An engine
+that is "Recognized, extension required"
 or "Not registered" gets a row in the support-status doc, not a cheatsheet, until
 it can actually connect.
+
+## Maintenance queue
+
+Seed the next pages in the same order as the support-status table, prioritizing
+engines with verified or wired query paths and enough source coverage in
+`knowledge/sources.json`: `duckdb.md`, `mongodb.md`, `redis.md`,
+`cassandra.md`, `clickhouse.md`, `snowflake.md`, `bigquery.md`, `bigtable.md`,
+and `influxdb.md`.
+
+Some sibling connector implementations can run ahead of the root registry.
+Until the registry and support-status page promote an engine to Wired or
+Extension, keep those details as related notes under the nearest wired
+cheatsheet instead of publishing a standalone page.
 
 ## Page format (the template every cheatsheet follows)
 

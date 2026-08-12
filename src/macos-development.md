@@ -23,8 +23,8 @@ From the `irodori-table` repository root:
 
 ```bash
 rustup toolchain install
-make setup
-make doctor
+task setup
+task doctor
 ```
 
 The root is not an npm workspace. Prefer the root `Makefile` shortcuts, or run
@@ -33,20 +33,20 @@ desktop scripts with `npm --prefix apps/desktop ...`.
 ## Run the desktop app
 
 ```bash
-make desktop-dev
+task desktop-dev
 ```
 
-`make desktop-dev` starts Vite on `http://localhost:1420` and launches the Tauri
+`task desktop-dev` starts Vite on `http://localhost:1420` and launches the Tauri
 desktop shell. If you start a debug binary directly without Vite running, the
 window will be blank or show a connection-refused message.
 
 ## Common checks
 
 ```bash
-make desktop-format-check
-make desktop-lint
-make desktop-test
-make desktop-build-verified
+task desktop-format-check
+task desktop-lint
+task desktop-test
+task desktop-build-verified
 ```
 
 Use `cargo test --workspace` for Rust backend changes.
@@ -57,8 +57,8 @@ Sample database containers live in the sibling `irodori-samples` repository:
 
 ```bash
 git clone https://github.com/irodori-table/irodori-samples ../irodori-samples
-make db-up DB=postgres
-make db-verify DB=postgres
+task db-up DB=postgres
+task db-verify DB=postgres
 ```
 
 Use the container engine that works best on your machine. The development doctor

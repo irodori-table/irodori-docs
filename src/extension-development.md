@@ -83,7 +83,7 @@ Validate all checked-in extension templates and examples from the repository
 root:
 
 ```sh
-make extension-manifests
+task extension-manifests
 ```
 
 The same guard runs in CI and checks required fields, unknown keys, safe relative

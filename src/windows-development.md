@@ -31,8 +31,8 @@ node tools/dev/doctor.mjs
 If GNU Make is available, the repository shortcuts are also supported:
 
 ```powershell
-make setup
-make doctor
+task setup
+task doctor
 ```
 
 ## Run the desktop app
@@ -46,7 +46,7 @@ npm --prefix apps/desktop run tauri -- dev
 Or, when `make` is available:
 
 ```powershell
-make desktop-dev
+task desktop-dev
 ```
 
 The development command starts Vite on `http://localhost:1420` and launches the

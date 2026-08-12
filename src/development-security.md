@@ -14,7 +14,7 @@ clean-room and license rules live in [clean-room.md](clean-room.md) and
 - Bun is allowed for local script execution through `JS_PM=bun`, but do not
   commit Bun lockfiles unless the project explicitly migrates package managers.
 - Use `npm ci` for CI-equivalent installs and before release work.
-- Use `make setup-fast` only as a local convenience path.
+- Use `task setup-fast` only as a local convenience path.
 - Do not run `npm audit fix --force` as a blind cleanup. Review the dependency
   tree and behavior changes, then update intentionally.
 
@@ -23,7 +23,7 @@ clean-room and license rules live in [clean-room.md](clean-room.md) and
 Use:
 
 ```sh
-make security
+task security
 ```
 
 The target runs:

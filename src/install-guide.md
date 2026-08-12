@@ -3,16 +3,17 @@
 Irodori Table publishes desktop packages from GitHub Releases. The release
 state checked for this guide is:
 
-- latest stable GitHub Release: `v0.7.32`, published on 2026-07-05;
-- latest lightweight prerelease: `v0.7.34`, published on 2026-07-08.
+- latest stable GitHub Release: `v0.8.5`, published on 2026-07-30;
+- latest lightweight prerelease: `v0.8.10`, published on 2026-08-08.
 
 <https://github.com/irodori-table/irodori-table/releases>
 
-The current `v0.7.x` release lane publishes a Linux AppImage only. Windows,
-macOS, updater, `.deb`, and `.rpm` artifacts are intentionally omitted until the
-signed stable release lane is restored. `cargo install` does not install the
-desktop application. It is only for the separate headless `irodori-server`
-binary from the older `irodori-kit v0.5.0` tag.
+Stable releases publish Linux, universal macOS, and Windows packages. The
+current stable release also includes signed Tauri updater metadata, although
+its macOS and Windows installers are not platform-signed and may trigger
+Gatekeeper or SmartScreen warnings. Lightweight prereleases publish Linux
+AppImage, `.deb`, and `.rpm` packages only. `cargo install` does not install the
+desktop application; it is only for the separate headless `irodori-server`.
 
 This guide is for packaged desktop installs. Source build prerequisites and
 WebView troubleshooting live in the platform development guides:
@@ -29,7 +30,7 @@ downloads assets from the latest release.
 
 ```bash
 mkdir -p "$HOME/Applications"
-gh release download --repo hjosugi/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
+gh release download --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
 chmod +x "$HOME/Applications"/Irodori*.AppImage
 "$HOME/Applications"/Irodori*.AppImage
 ```
@@ -38,28 +39,30 @@ To test the newest lightweight prerelease instead of the latest stable release,
 pass the tag explicitly:
 
 ```bash
-gh release download v0.7.34 --repo hjosugi/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
+gh release download v0.8.10 --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
 ```
 
 ## Downloads by OS
 
 | OS | Recommended asset | Notes |
 | --- | --- | --- |
-| Linux | `.AppImage` | Current `v0.7.x` releases publish `Irodori.Table_<version>_amd64.AppImage`. |
-| Windows | Source build | Current `v0.7.x` releases do not publish `.msi` or setup `.exe` assets. |
-| macOS | Source build | Current `v0.7.x` releases do not publish `.dmg` assets. |
+| Linux | `.AppImage` | Stable and lightweight releases also provide `.deb` and `.rpm` packages. |
+| Windows | setup `.exe` | The stable release also provides an `.msi`; current installers are unsigned. |
+| macOS | universal `.dmg` | The current package is unsigned and may trigger Gatekeeper warnings. |
 
 ## Windows
 
-Current `v0.7.x` releases do not publish Windows installers. Build from source
-with the [Windows development guide](windows-development.md) until the signed
-stable release lane is restored.
+Download the setup `.exe` or `.msi` from the latest stable release. The current
+installers are unsigned, so verify that the URL is under
+`github.com/irodori-table/irodori-table/releases` before accepting a
+SmartScreen warning. For a source build, use the
+[Windows development guide](windows-development.md).
 
 ## macOS
 
-Current `v0.7.x` releases do not publish macOS disk images. Build from source
-with the [macOS development guide](macos-development.md) until the signed and
-notarized stable release lane is restored.
+Download the universal `.dmg` from the latest stable release. The current disk
+image is unsigned and not notarized, so macOS may show a Gatekeeper warning.
+For a source build, use the [macOS development guide](macos-development.md).
 
 ## Linux
 
@@ -84,11 +87,10 @@ For release channel details and future package-manager plans, see
 ## Headless server
 
 Rust users who need the local HTTP API, not the desktop app, can install the
-headless server from the last `irodori-kit` tag that shipped it as a workspace
-package:
+headless server from the foundation tag used by the current desktop workspace:
 
 ```bash
-cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.5.0 --locked irodori-server
+cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.7.5 --locked irodori-server
 ```
 
 See [Headless local data API](headless-data-api.md) for runtime configuration.

@@ -10,7 +10,7 @@
 | Adapter | `apps/desktop/src-tauri/src/db/neo4j.rs` |
 | Default port | 7687 (Bolt) |
 | Query language | **Cypher** (not SQL) |
-| Irodori status | Neo4j is Wired (graph); Memgraph is extension-required until registry promotion — see `docs/data-source-support-status.md` |
+| Irodori status | Neo4j is Wired (graph); Memgraph uses an installable extension — see [data-source support status](../data-source-support-status.md) |
 | What's different | Data is **nodes and relationships**, not rows. You query patterns with Cypher and get back records of nodes/relationships/scalars. |
 | Optional analytics | Graph Data Science (GDS) procedures are available only when installed/enabled on the connected Neo4j database. |
 
@@ -158,15 +158,17 @@ pipelines need feature properties in the projected graph before training.
 
 ## Irodori-specific behavior
 
-- **Object browser mapping** (`neo4j.rs::metadata`): node **labels are shown as
-  "tables"** and **relationship types as "views"**. Their "columns" are the
-  property keys, sampled with
-  `MATCH (n:\`Label\`) UNWIND keys(n) AS key RETURN DISTINCT key LIMIT 100`. This is
-  a sampling pass, so a property that only appears on a few nodes can be missed —
-  treat the column list as representative, not exhaustive.
+- **Object browser mapping**: node **labels are shown as graph objects** and
+  **relationship types as graph objects**. Their columns are sampled property
+  keys, so a property that only appears on a few nodes can be missed — treat the
+  column list as representative, not exhaustive.
+- **Extension metadata** additionally reports relationship endpoints,
+  indexes/constraints, inferred property types from samples, and optional GDS
+  graph/model/pipeline catalog objects when `gds.*` procedures are available.
 - **Results are tabular today.** Node/relationship records show as JSON property
   cells. A query-result **graph visualization** is a planned shared capability
-  (P1, see `docs/data-source-coverage-strategy.md` → Graph), not yet in the UI.
+  (P1, see [data-source coverage strategy](../data-source-coverage-strategy.md)
+  → Graph), not yet in the UI.
 - **No SQL.** Engines like advanced filters / inline editing that assume relational
   semantics do not apply; use Cypher `SET` / `MERGE` / `DELETE`.
 
@@ -182,9 +184,19 @@ pipelines need feature properties in the projected graph before training.
 
 ## Related: Memgraph
 
-Memgraph speaks Bolt + Cypher and is in the `DbEngine` enum (`memgraph`) but is
-currently **"recognized, no connector"** — most of this page applies once it is
-routed through the Neo4j/Bolt adapter and verified.
+Memgraph speaks Bolt + Cypher and has an installable extension implementation in
+`irodori-extension-memgraph`. Core treats `memgraph` as extension-required, so
+keep Memgraph-specific notes here instead of publishing a standalone
+`memgraph.md`.
+
+Most Cypher examples above apply. Metadata can differ from Neo4j's `CALL db.*`
+procedures; the extension uses portable pattern queries for labels and
+relationship types, for example:
+
+```cypher
+MATCH (n) UNWIND labels(n) AS label RETURN DISTINCT label ORDER BY label;
+MATCH ()-[r]->() RETURN DISTINCT type(r) AS relationshipType ORDER BY relationshipType;
+```
 
 ## Sources
 
@@ -192,3 +204,5 @@ Generated from `knowledge/sources.json`:
 
 - `neo4j-cypher-manual` — https://neo4j.com/docs/cypher-manual/current/
 - `neo4j-browser-docs` — https://neo4j.com/docs/browser/
+- `neo4j-graph-data-science` — https://neo4j.com/docs/graph-data-science/current/
+- `memgraph-docs` — https://memgraph.com/docs

@@ -1,9 +1,10 @@
 # DB Feature Samples
 
-`samples/db-feature-samples.json` is the source of truth for DB-specific sample
-projects, feature checks, and official learning resources. It is intentionally
-machine-readable so the repository docs and public website can stay aligned with
-the engine registry.
+[`db-feature-samples.json`](https://github.com/irodori-table/irodori-samples/blob/main/db-feature-samples.json)
+in the sibling `irodori-samples` repository is the source of truth for
+DB-specific sample projects, feature checks, and official learning resources.
+It is intentionally machine-readable so the repository docs and public website
+can stay aligned with the engine registry.
 
 ## Local sample projects
 
@@ -12,26 +13,28 @@ generic connection smoke test.
 
 | Engine | Sample file | Verification command | Focus |
 | --- | --- | --- | --- |
-| PostgreSQL | `samples/projects/postgres/queries.sql` | `make db-verify DB=postgres` | JSONB, arrays, GIN, extensions, explain JSON |
-| MySQL | `samples/projects/mysql/queries.sql` | `make db-verify DB=mysql` | JSON functions, FK metadata, windows, explain JSON |
-| MariaDB | `samples/projects/mariadb/queries.sql` | `make db-verify DB=mariadb` | JSON_VALID/JSON_VALUE, recursive CTEs, windows |
-| SQLite | `samples/projects/sqlite/queries.sql` | `cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml sqlite` | Embedded SQL, JSON, FTS5, PRAGMA |
-| DuckDB | `samples/projects/duckdb/queries.sql` | `cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml --features duckdb duckdb_in_memory` | Local analytics, structs, summarize, explain |
-| SQL Server | `samples/projects/sqlserver/queries.sql` | `make db-verify DB=sqlserver` | T-SQL JSON, identity, TOP, OFFSET/FETCH |
-| Oracle | `samples/projects/oracle/queries.sql` | `make db-verify DB=oracle` | Thin TNS, SQL/JSON, analytic functions, DBMS_XPLAN |
-| MongoDB | `samples/projects/mongodb/queries.js` | `make db-verify DB=mongodb` | Collection query, JSON filter, aggregation reference |
-| TimescaleDB | `samples/projects/timescaledb/queries.sql` | `make db-verify DB=timescaledb` | Hypertables, time_bucket, time-series metadata |
-| CockroachDB | `samples/projects/cockroachdb/queries.sql` | `make db-verify DB=cockroachdb` | unique_rowid, UPSERT, range inspection |
-| YugabyteDB | `samples/projects/yugabytedb/queries.sql` | `make db-verify DB=yugabytedb` | YSQL, split tablets, table properties |
-| TiDB | `samples/projects/tidb/queries.sql` | `make db-verify DB=tidb` | MySQL wire, tidb_version, shard_row_id_bits, explain analyze |
+| PostgreSQL | `../irodori-samples/projects/postgres/queries.sql` | `task db-verify DB=postgres` | JSONB, arrays, GIN, extensions, explain JSON |
+| MySQL | `../irodori-samples/projects/mysql/queries.sql` | `task db-verify DB=mysql` | JSON functions, FK metadata, windows, explain JSON |
+| MariaDB | `../irodori-samples/projects/mariadb/queries.sql` | `task db-verify DB=mariadb` | JSON_VALID/JSON_VALUE, recursive CTEs, windows |
+| SQLite | `../irodori-samples/projects/sqlite/queries.sql` | `cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml sqlite` | Embedded SQL, JSON, FTS5, PRAGMA |
+| DuckDB | `../irodori-samples/projects/duckdb/queries.sql` | `cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml --features duckdb duckdb_in_memory` | Local analytics, structs, summarize, explain |
+| SQL Server | `../irodori-samples/projects/sqlserver/queries.sql` | `task db-verify DB=sqlserver` | T-SQL JSON, identity, TOP, OFFSET/FETCH |
+| Oracle | `../irodori-samples/projects/oracle/queries.sql` | `task db-verify DB=oracle` | Thin TNS, SQL/JSON, analytic functions, DBMS_XPLAN |
+| MongoDB | `../irodori-samples/projects/mongodb/queries.js` | `task db-verify DB=mongodb` | Collection query, JSON filter, aggregation reference |
+| TimescaleDB | `../irodori-samples/projects/timescaledb/queries.sql` | `task db-verify DB=timescaledb` | Hypertables, time_bucket, time-series metadata |
+| CockroachDB | `../irodori-samples/projects/cockroachdb/queries.sql` | `task db-verify DB=cockroachdb` | unique_rowid, UPSERT, range inspection |
+| YugabyteDB | `../irodori-samples/projects/yugabytedb/queries.sql` | `task db-verify DB=yugabytedb` | YSQL, split tablets, table properties |
+| TiDB | `../irodori-samples/projects/tidb/queries.sql` | `task db-verify DB=tidb` | MySQL wire, tidb_version, shard_row_id_bits, explain analyze |
 
-## Reference-only engines
+## Additional sample engines
 
-Some engines are wired but cloud-only, hosted-only, or still missing a local
-verification fixture. Their entries stay in `samples/db-feature-samples.json` so
-the capability map remains complete: Redshift, Neon, H2, Neo4j, Redis,
-Cassandra, ClickHouse, Snowflake, BigQuery, Bigtable, InfluxDB, Memgraph,
-Qdrant, Milvus, and Pinecone.
+The sibling sample repository now covers 23 engines with deterministic seed
+data and per-engine query projects, including ClickHouse, Redis, Neo4j,
+Memgraph, Cassandra, ScyllaDB, QuestDB, InfluxDB, Elasticsearch, OpenSearch,
+Qdrant, ArangoDB, and DynamoDB. Some of these require an installable connector
+extension rather than a built-in desktop driver. Cloud-only or hosted-only
+targets such as Redshift, Neon, Snowflake, BigQuery, Bigtable, Milvus, and
+Pinecone remain reference-only.
 
 ## Managed wire-compatible targets
 
@@ -65,7 +68,7 @@ node tools/docs/db-feature-samples.mjs
 It is also part of:
 
 ```bash
-make docs-check
+task docs-check
 ```
 
 The check fails when a registered engine has no catalog entry, a sample project

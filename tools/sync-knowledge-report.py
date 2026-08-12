@@ -12,7 +12,7 @@ import urllib.request
 from pathlib import Path
 
 SOURCE_URL = (
-    "https://raw.githubusercontent.com/hjosugi/irodori-table/main/"
+    "https://raw.githubusercontent.com/irodori-table/irodori-table/main/"
     "registry/knowledge-refresh-report.md"
 )
 TARGET = Path(__file__).resolve().parent.parent / "src" / "knowledge-refresh-report.md"

@@ -15,21 +15,21 @@ cheatsheet snapshots are mirrored from the registry and knowledge inputs in
 
 | Engine | Wire / driver | Default port | Query model | Test (`tests/integration_db.rs` / unit) | Container |
 |---|---|---|---|---|---|
-| PostgreSQL | postgres / sqlx | 5432 | SQL | `postgres_samples` | `samples/postgres` |
-| MySQL | mysql / sqlx | 3306 | SQL | `mysql_samples` | `samples/mysql` |
-| MariaDB | mysql wire / sqlx | 3306 | SQL | `mariadb_connect` | `samples/mariadb` |
-| TimescaleDB | postgres wire / sqlx | 5432 | SQL | `timescaledb_samples` | `samples/timescaledb` |
-| CockroachDB | postgres wire / sqlx | 26257 | SQL | `cockroachdb_connect` | `samples/cockroachdb` |
-| YugabyteDB | postgres wire (YSQL) / sqlx | 5433 | SQL | `yugabytedb_connect` | `samples/yugabytedb` |
-| TiDB | mysql wire / sqlx | 4000 | SQL | `tidb_connect` | `samples/tidb` |
-| SQL Server | TDS / tiberius | 1433 | SQL | `sqlserver_samples` | `samples/sqlserver` |
+| PostgreSQL | postgres / sqlx | 5432 | SQL | `postgres_samples` | `../irodori-samples/postgres` |
+| MySQL | mysql / sqlx | 3306 | SQL | `mysql_samples` | `../irodori-samples/mysql` |
+| MariaDB | mysql wire / sqlx | 3306 | SQL | `mariadb_connect` | `../irodori-samples/mariadb` |
+| TimescaleDB | postgres wire / sqlx | 5432 | SQL | `timescaledb_samples` | `../irodori-samples/timescaledb` |
+| CockroachDB | postgres wire / sqlx | 26257 | SQL | `cockroachdb_connect` | `../irodori-samples/cockroachdb` |
+| YugabyteDB | postgres wire (YSQL) / sqlx | 5433 | SQL | `yugabytedb_connect` | `../irodori-samples/yugabytedb` |
+| TiDB | mysql wire / sqlx | 4000 | SQL | `tidb_connect` | `../irodori-samples/tidb` |
+| SQL Server | TDS / tiberius | 1433 | SQL | `sqlserver_samples` | `../irodori-samples/sqlserver` |
 | DuckDB | embedded libduckdb | — | SQL | `duckdb_in_memory` | none (embedded) |
-| MongoDB | document / mongodb | 27017 | documents | `mongo_samples` | `samples/mongodb` |
+| MongoDB | document / mongodb | 27017 | documents | `mongo_samples` | `../irodori-samples/mongodb` |
 | SQLite | file / sqlx | — | SQL | `sqlite_connect_and_query_round_trip` (unit) | none (file) |
-| Oracle | thin TNS / `oracle-rs` | 1521 | SQL | `oracle_samples` | `samples/oracle` |
+| Oracle | thin TNS / `oracle-rs` | 1521 | SQL | `oracle_samples` | `../irodori-samples/oracle` |
 | Redshift | postgres wire / sqlx | 5439 | SQL | — (AWS-only, no local container) | — |
 
-Run them with `make db-verify DB=<engine>` or `make db-all`. Env-gated tests
+Run them with `task db-verify DB=<engine>` or `task db-all`. Env-gated tests
 skip unless the matching `IRODORI_*` variable is set; the sample harness sets it
 per engine.
 

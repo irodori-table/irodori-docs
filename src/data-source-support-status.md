@@ -10,15 +10,15 @@ dispatch in `apps/desktop/src-tauri/src/db.rs`. Roadmap intent lives in
 <https://irodori-table.github.io/irodori-docs/data-source-coverage-strategy.html>;
 this file reconciles intent against the code.
 
-Managed-service verification procedures live outside the public user path; keep
-this page focused on selectable engine support and registry drift.
+For contract/provisioning and managed-service verification procedures, see
+[External DB contract and verification](external-db-contract-and-verification.md).
 
 Status legend:
 
 - **Wired** — has a production connect path and a dedicated adapter or a
   wire-compatible adapter it routes through.
 - **Verified** — Wired *and* exercised against a real instance in
-  `tests/integration_db.rs` through the sample harness (`make db-verify`).
+  `tests/integration_db.rs` through the sample harness (`task db-verify`).
 - **Pending** — recognized by the engine enum, adapter scaffolding exists, but the
   connector intentionally returns a "not ready" result.
 - **Extension** — recognized by the engine enum and published through the
@@ -99,7 +99,7 @@ them. The app asks the user to install the matching connector from
 | DynamoDB | `dynamodb` | Key-value | `KeyValue` | Installable key-value connector extension. |
 | ArangoDB | `arangodb` | Graph / multi-model | `Graph` | Installable graph/multi-model connector extension. |
 | Apache IoTDB | `iotdb` | Time-series | `TimeSeries` | Installable time-series connector extension. |
-| Apache Hive | `hive` | Lakehouse / catalog | `Jdbc` | Installable Hive/Hive Metastore connector extension. |
+| Apache Hive | `hive` | Lakehouse / catalog | `Jdbc` | Installable Hive/Hive Metastore connector extension. **Known limitation (#117): reduces every table to a bare `read_parquet` glob under the table root, ignoring the metastore — partitions stored elsewhere, and ORC/Avro/text tables, read as empty or fail to resolve. The app warns on connect.** |
 | Amazon Athena | `athena` | Lakehouse / query-engine | `Lakehouse` | Installable Athena/Glue/workgroup connector extension. |
 | Apache Iceberg | `iceberg` | Lakehouse | `Lakehouse` | Installable catalog-backed Iceberg connector extension. |
 | AWS S3 Tables | `s3Tables` | Lakehouse | `Lakehouse` | Installable managed Iceberg connector extension. |

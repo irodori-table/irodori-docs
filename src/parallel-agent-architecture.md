@@ -62,7 +62,7 @@ under the sibling checkout:
 ```sh
 node tools/extensions/scaffold-connector-repos.mjs
 cd ../irodori-extensions/irodori-extension-hive
-make check
+task check
 ```
 
 A connector agent can implement Hive, Snowflake, Oracle, Iceberg, vector DBs, or
@@ -136,7 +136,7 @@ when touching contracts:
 node tools/docs/agent-workstreams.mjs
 node tools/docs/build-extension-catalog.mjs --check
 node tools/docs/support-status.mjs
-make extension-manifests
+task extension-manifests
 npm --prefix apps/desktop run build
 cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml db::engine
 ```

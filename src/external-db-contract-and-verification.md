@@ -1,6 +1,6 @@
 # External DB contract and verification runbook
 
-Last checked: 2026-06-26 JST.
+Last checked: 2026-08-13 JST.
 
 This runbook covers every `DbEngine` currently declared by Irodori and explains
 how to contract/provision external services when local verification is not
@@ -10,8 +10,8 @@ enough. The source of truth for engine support remains
 
 ## Policy
 
-- Prefer local verification first when an engine has an embedded mode or a
-  `samples/<engine>/compose.yaml`.
+- Prefer local verification first when an engine has an embedded mode or an
+  `../irodori-samples/<engine>/compose.yaml` fixture.
 - For managed-only engines, create resources with IaC where the vendor has a
   stable provider or API.
 - Never keep cloud resources running after verification. Set auto-suspend,
@@ -26,27 +26,33 @@ enough. The source of truth for engine support remains
 
 | Engine | `DbEngine` id | Local verification | Contract needed for adapter verification? | IaC path when external |
 |---|---|---:|---:|---|
-| PostgreSQL | `postgres` | `samples/postgres` | No | Terraform via any Postgres provider only for managed smoke tests |
-| MySQL | `mysql` | `samples/mysql` | No | Cloud SQL/RDS/etc. optional |
-| MariaDB | `mariadb` | `samples/mariadb` | No | Cloud/RDS optional |
+| PostgreSQL | `postgres` | `../irodori-samples/postgres` | No | Terraform via any Postgres provider only for managed smoke tests |
+| MySQL | `mysql` | `../irodori-samples/mysql` | No | Cloud SQL/RDS/etc. optional |
+| MariaDB | `mariadb` | `../irodori-samples/mariadb` | No | Cloud/RDS optional |
 | SQLite | `sqlite` | embedded file | No | Not applicable |
-| Oracle | `oracle` | `samples/oracle` | No for local target | OCI or other managed Oracle optional |
-| SQL Server | `sqlserver` | `samples/sqlserver` | No | Azure SQL/RDS optional |
+| Oracle | `oracle` | `../irodori-samples/oracle` | No for local target | OCI or other managed Oracle optional |
+| SQL Server | `sqlserver` | `../irodori-samples/sqlserver` | No | Azure SQL/RDS optional |
 | DuckDB | `duckdb` | embedded / `:memory:` | No | Not applicable |
-| MongoDB | `mongodb` | `samples/mongodb` | No | Atlas optional |
-| CockroachDB | `cockroachdb` | `samples/cockroachdb` | No | Cockroach Cloud optional |
-| YugabyteDB | `yugabytedb` | `samples/yugabytedb` | No | YugabyteDB Aeon optional |
-| TimescaleDB | `timescaledb` | `samples/timescaledb` | No | Timescale Cloud optional |
-| TiDB | `tidb` | `samples/tidb` | No | TiDB Cloud optional |
+| MongoDB | `mongodb` | `../irodori-samples/mongodb` | No | Atlas optional |
+| CockroachDB | `cockroachdb` | `../irodori-samples/cockroachdb` | No | Cockroach Cloud optional |
+| YugabyteDB | `yugabytedb` | `../irodori-samples/yugabytedb` | No | YugabyteDB Aeon optional |
+| TimescaleDB | `timescaledb` | `../irodori-samples/timescaledb` | No | Timescale Cloud optional |
+| TiDB | `tidb` | `../irodori-samples/tidb` | No | TiDB Cloud optional |
 | H2 | `h2` | add local TCP fixture | No after fixture exists | Not applicable |
-| ClickHouse | `clickhouse` | add local compose fixture | No after fixture exists | ClickHouse Cloud optional |
-| Neo4j | `neo4j` | add local compose fixture | No after fixture exists | Aura optional |
-| Memgraph | `memgraph` | add local compose fixture | Connector not production yet | Defer until connector is wired |
-| InfluxDB | `influxdb` | add local compose fixture | No after fixture exists | InfluxDB Cloud optional |
-| Redis | `redis` | add local compose fixture | No after fixture exists | Redis Cloud optional |
-| Cassandra | `cassandra` | add Cassandra/Scylla compose fixture | No after fixture exists | Astra/Scylla Cloud optional |
-| Qdrant | `qdrant` | add local compose fixture | Connector not production yet | Defer until connector is wired |
+| ClickHouse | `clickhouse` | `../irodori-samples/clickhouse` | No | ClickHouse Cloud optional |
+| Neo4j | `neo4j` | `../irodori-samples/neo4j` | No | Aura optional |
+| Memgraph | `memgraph` | `../irodori-samples/memgraph` | Connector extension required | Defer managed verification until the connector is installed |
+| InfluxDB | `influxdb` | `../irodori-samples/influxdb` | No | InfluxDB Cloud optional |
+| Redis | `redis` | `../irodori-samples/redis` | No | Redis Cloud optional |
+| Cassandra | `cassandra` | `../irodori-samples/cassandra` | No | Astra optional |
+| ScyllaDB | `scylladb` | `../irodori-samples/scylladb` | No | Scylla Cloud optional |
+| QuestDB | `questdb` | `../irodori-samples/questdb` | No | QuestDB Cloud optional |
+| Qdrant | `qdrant` | `../irodori-samples/qdrant` | Connector extension required | Defer managed verification until the connector is installed |
 | Milvus | `milvus` | add local compose fixture | Connector not production yet | Defer until connector is wired |
+| Elasticsearch | `elasticsearch` | `../irodori-samples/elasticsearch` | Connector extension required | Elastic Cloud optional |
+| OpenSearch | `openSearch` | `../irodori-samples/openSearch` | Connector extension required | Amazon OpenSearch Service optional |
+| DynamoDB | `dynamodb` | `../irodori-samples/dynamodb` | Connector extension required | AWS account optional |
+| ArangoDB | `arangodb` | `../irodori-samples/arangodb` | Connector extension required | ArangoGraph optional |
 | Redshift | `redshift` | No practical local Redshift | Yes | Terraform AWS provider |
 | Neon | `neon` | Postgres-compatible local proxy is not enough | Yes | Neon API/CLI; Terraform provider must be reviewed before use |
 | Snowflake | `snowflake` | No local Snowflake | Yes | Snowflake Terraform provider |
@@ -74,14 +80,14 @@ implementing the adapter, catalog model, or lakehouse execution path.
 Use the sample harness for engines that already have compose fixtures:
 
 ```bash
-make db-verify DB=postgres
-make db-verify DB=mysql
-make db-all
-make db-up DB=postgres
-make db-down DB=postgres
+task db-verify DB=postgres
+task db-verify DB=mysql
+task db-all
+task db-up DB=postgres
+task db-down DB=postgres
 ```
 
-For engines with no `samples/<engine>/compose.yaml`, add a fixture before
+For engines with no `../irodori-samples/<engine>/compose.yaml`, add a fixture before
 creating a cloud contract unless the service is managed-only or the local
 emulator does not exercise the same adapter path.
 
@@ -544,7 +550,7 @@ Hive can mean two different things in Irodori planning:
 
 Local-first plan:
 
-1. Add a `samples/hive/compose.yaml` fixture only when implementing the adapter.
+1. Add an `../irodori-samples/hive/compose.yaml` fixture only when implementing the adapter.
 2. Include HiveServer2, a metastore database, and a small table.
 3. Verify with Beeline first:
 

@@ -45,8 +45,8 @@ dependencies, then run the repository doctor:
 
 ```bash
 rustup toolchain install
-make setup
-make doctor
+task setup
+task doctor
 ```
 
 ### Build temp directory
@@ -56,7 +56,7 @@ linking. Use a repo-local temp directory for those runs:
 
 ```bash
 mkdir -p .irodori-local/tmp
-TMPDIR=$PWD/.irodori-local/tmp make desktop-build-verified
+TMPDIR=$PWD/.irodori-local/tmp task desktop-build-verified
 ```
 
 ### AppImage FUSE Dependency
@@ -74,7 +74,7 @@ extracting it inline using the environment variable:
 ```bash
 APPIMAGE_EXTRACT_AND_RUN=1 ./Irodori-Table.AppImage
 ```
-*(This is handled automatically by the project's `make run-linux` and `apps/desktop/tools/install-linux.mjs` wrapper).*
+*(This is handled automatically by the project's `task run-linux` and `apps/desktop/tools/install-linux.mjs` wrapper).*
 
 ---
 
@@ -111,9 +111,9 @@ export GDK_BACKEND=wayland
 ### Running in Dev Mode
 To run the hot-reloading development server:
 ```bash
-make desktop-dev
+task desktop-dev
 ```
-`make desktop-dev` runs the Tauri CLI from `apps/desktop`, which starts Vite and
+`task desktop-dev` runs the Tauri CLI from `apps/desktop`, which starts Vite and
 the desktop shell together.
 
 ### Direct Binary Execution
@@ -127,7 +127,7 @@ To inspect Rust stdout/logs while still pointing the webview at a running UI,
 start the dev server first, then launch the binary in a second terminal:
 ```bash
 # Terminal 1 - serve the frontend on :1420
-make desktop-vite
+task desktop-vite
 # Terminal 2 - run the already-built debug binary
 ./.irodori-local/target/debug/irodori-table-desktop
 ```
@@ -135,10 +135,10 @@ make desktop-vite
 To run a **standalone** binary that needs no dev server, build one with the
 frontend embedded from `frontendDist` (`../dist`):
 ```bash
-make desktop-build       # populate apps/desktop/dist
+task desktop-build       # populate apps/desktop/dist
 npm --prefix apps/desktop run tauri -- build --debug
 # Or a full AppImage with embedded assets:
-make run-linux
+task run-linux
 ```
 
 ### Error: "Could not connect to localhost: Connection refused"
@@ -146,16 +146,16 @@ A blank window with this message is **not** a database error - the webview could
 not reach the dev server URL baked into a debug build (`http://localhost:1420`).
 
 Checklist:
-- Use `make desktop-dev` instead of launching the debug binary directly - it
+- Use `task desktop-dev` instead of launching the debug binary directly - it
   starts Vite (`beforeDevCommand`) and the app together.
 - If you must run the binary directly, confirm Vite is up:
   `ss -ltnp | grep 1420` should show a listener. If not, run
-  `make desktop-vite` first.
+  `task desktop-vite` first.
 - The dev port is fixed and `strictPort: true`, so if `:1420` is already taken,
   Vite exits and the app has nothing to connect to. Free the port
   (`fuser -k 1420/tcp`) or stop the other process, then retry.
 - For a no-dev-server run, use an embedded-assets build
-  (`npm --prefix apps/desktop run tauri -- build --debug` or `make run-linux`);
+  (`npm --prefix apps/desktop run tauri -- build --debug` or `task run-linux`);
   a debug binary alone always expects `:1420`.
 
 ### Reading Console and Rust Logs

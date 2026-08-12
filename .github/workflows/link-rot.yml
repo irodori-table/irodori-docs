@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check links strictly
         id: lychee
@@ -38,11 +38,12 @@ jobs:
             --accept 200,204,206,429
             --exclude '^https://questdb\.com/docs/'
             README.md
+            README.ja.md
             'src/**/*.md'
 
       - name: Open a report issue
         if: steps.lychee.outputs.exit_code != 0
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Monthly link rot report"
           content-filepath: ./lychee-report.md

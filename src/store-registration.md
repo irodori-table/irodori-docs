@@ -8,9 +8,11 @@ Use a private local note or private archive for operational submission notes.
 
 Current public release state:
 
-- stable GitHub Release: `v0.7.32`;
-- latest lightweight prerelease: `v0.7.34`;
-- current `v0.7.x` assets: Linux AppImage only.
+- stable GitHub Release: `v0.8.5`;
+- latest lightweight prerelease: `v0.8.10`;
+- stable assets: Linux AppImage/`.deb`/`.rpm`, universal macOS, Windows
+  NSIS/MSI, and Tauri updater metadata;
+- lightweight prerelease assets: Linux AppImage/`.deb`/`.rpm` only.
 
 ## Public listing metadata
 
@@ -34,7 +36,7 @@ Current public release state:
 | Ads / tracking | None in this repository |
 | Account required | No hosted Irodori account required |
 | Primary binary | Tauri desktop app |
-| Headless binary | `irodori-server` from historical `irodori-kit v0.5.0` |
+| Headless binary | `irodori-server` from `irodori-kit v0.7.5` |
 
 ## Package IDs
 
@@ -135,8 +137,8 @@ Still needed before store submission:
 - at least one 16:9 product screenshot showing the workbench;
 - optional short demo GIF/video for stores that support rich media;
 - signed/notarized release artifacts where the channel requires them;
-- signed Windows and signed/notarized macOS `v0.7.x` artifacts;
-- updater `latest.json` from a successful stable workflow dispatch;
+- platform-signed Windows and signed/notarized macOS artifacts (the current
+  stable packages are unsigned);
 - committed package-manager, desktop-entry, and appstream manifest templates if
   those channels become active.
 
@@ -144,9 +146,9 @@ Still needed before store submission:
 
 ### GitHub Releases
 
-Status: lightweight Linux AppImage lane is live. The stable Windows/macOS/updater
-lane is wired in `.github/workflows/release.yml` but blocked on platform signing
-and notarization secrets.
+Status: the lightweight Linux lane and full cross-platform stable lane are live.
+The stable `v0.8.5` release includes updater metadata, but its macOS and Windows
+packages are not platform-signed.
 
 Before publishing a release:
 
@@ -158,14 +160,16 @@ Before publishing a release:
 
 ### Tauri updater
 
-Status: stable workflow lane is wired; publication is blocked until all stable
-release signing gates pass.
+Status: live. The `v0.8.5` stable release includes `latest.json` and signed
+updater artifacts. Updater signing is separate from Windows platform signing
+and macOS signing/notarization.
 
 Needed:
 
+- keep the updater keypair valid and available to the stable workflow;
 - configure the remaining Windows and macOS signing/notarization secrets;
-- dispatch the `stable` workflow for an existing `v*` tag;
-- verify updater `latest.json` and signatures before marking the release stable;
+- verify updater `latest.json`, signatures, and platform packages before making
+  a release stable;
 - document rollback when an updater artifact is bad.
 
 ### Homebrew cask
@@ -226,7 +230,7 @@ Status: later.
 The current git install path is:
 
 ```bash
-cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.5.0 --locked irodori-server
+cargo install --git https://github.com/irodori-table/irodori-kit --tag v0.7.5 --locked irodori-server
 ```
 
 crates.io publication requires all `irodori-*` git/path dependencies to be

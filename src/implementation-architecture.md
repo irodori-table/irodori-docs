@@ -189,9 +189,9 @@ flowchart LR
 Use these commands:
 
 ```sh
-make desktop-typegen
-make desktop-typegen-check
-make desktop-build-verified
+task desktop-typegen
+task desktop-typegen-check
+task desktop-build-verified
 ```
 
 ## Query Execution Flow
@@ -299,7 +299,7 @@ Extension rules:
 - App-only plugin registry and loading state belongs under
   `apps/desktop/src/features/extensions`.
 - Templates must stay permissively licensed and validate through
-  `make extension-manifests`.
+  `task extension-manifests`.
 
 ## Parallel Agent Development
 
@@ -334,7 +334,7 @@ node tools/docs/agent-workstreams.mjs
    - Local privileged action: `apps/desktop/src-tauri/src/<area>`.
    - Stable shared model: an existing crate, not a new crate by default.
 2. If TypeScript calls Rust, define or update the Rust DTO/command first.
-3. Regenerate bindings with `make desktop-typegen`.
+3. Regenerate bindings with `task desktop-typegen`.
 4. Wire the UI through `generated/irodori-api.ts`, not handwritten invoke calls.
 5. Add focused unit tests near the owning feature.
 6. Run the smallest relevant checks, then broaden if the boundary changed.
@@ -342,7 +342,7 @@ node tools/docs/agent-workstreams.mjs
 Typical checks:
 
 ```sh
-make desktop-typegen-check
+task desktop-typegen-check
 npm --prefix apps/desktop test
 npm --prefix apps/desktop run build
 cargo test --workspace

@@ -10,7 +10,7 @@
 | Adapter | `apps/desktop/src-tauri/src/db/postgres.rs` |
 | Default port | 5432 |
 | Query language | SQL (PostgreSQL dialect) |
-| Irodori status | Verified — see `docs/data-source-support-status.md` |
+| Irodori status | Verified — see [data-source support status](../data-source-support-status.md) |
 | What's different | The wire-compatible engines (CockroachDB, YugabyteDB, Redshift, TimescaleDB, Neon) reuse this exact path; only the default port and a few catalog quirks differ. |
 
 ## Connect
@@ -82,7 +82,8 @@ constraints through the Postgres information-schema metamodel.
   bool/ints/floats native.
 - **Arrays** decode best-effort to text today (rich array decode is a follow-up).
 - **CockroachDB** omits some `OID`-typed system columns that tools expect.
-- The deep driver/decoding reference is `docs/engine-syntax-reference.md`.
+- See the [engine syntax reference](../engine-syntax-reference.md) for deeper
+  driver and decoding details.
 
 ## Gotchas
 

@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # mdBook silently skips src pages missing from SUMMARY.md, so links to
       # them 404 on the published site; fail fast before the slow build.
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check Markdown links
         uses: lycheeverse/lychee-action@v2
@@ -48,4 +48,5 @@ jobs:
             --accept 200,204,206,301,302,429
             --exclude '^https://questdb\.com/docs/'
             README.md
+            README.ja.md
             'src/**/*.md'
