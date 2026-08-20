@@ -4,8 +4,8 @@ How users get Irodori Table and how it updates.
 
 - Current stable GitHub Release: **0.8.5** (`v0.8.5`, published
   2026-07-30).
-- Current lightweight prerelease: **0.8.10** (`v0.8.10`, published
-  2026-08-08).
+- Current lightweight prerelease: **0.8.12** (`v0.8.12`, published
+  2026-08-20).
 
 ## Already in place
 
@@ -50,7 +50,7 @@ Use an explicit tag to test a lightweight prerelease:
 
 ```bash
 tmp="$(mktemp -d)"
-gh release download v0.8.10 --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$tmp"
+gh release download v0.8.12 --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$tmp"
 chmod +x "$tmp"/*.AppImage
 "$tmp"/*.AppImage
 ```
@@ -59,7 +59,7 @@ The current checked assets are:
 
 - `v0.8.5`: `Irodori.Table_0.8.5_amd64.AppImage`, plus `.deb`, `.rpm`,
   universal macOS, Windows NSIS/MSI, and updater assets.
-- `v0.8.10`: `Irodori.Table_0.8.10_amd64.AppImage`, plus `.deb` and `.rpm`.
+- `v0.8.12`: `Irodori.Table_0.8.12_amd64.AppImage`, plus `.deb` and `.rpm`.
 
 Check the release notes before installing: a stable release may publish all
 platform packages without platform code signing, and a lightweight prerelease

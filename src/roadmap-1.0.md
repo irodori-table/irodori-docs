@@ -3,7 +3,7 @@
 1.0 is the **excellent, stable core** — not every roadmap item. The strategic call
 is to ship a polished cross-platform SQL GUI for the core SQL engines and
 explicitly defer the exotic surfaces. Current released app version:
-**0.8.10** (lightweight prerelease); the latest stable release is **0.8.5**.
+**0.8.12** (lightweight prerelease); the latest stable release is **0.8.5**.
 
 ## P0 — blockers (must do for 1.0)
 

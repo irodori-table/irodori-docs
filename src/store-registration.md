@@ -9,7 +9,7 @@ Use a private local note or private archive for operational submission notes.
 Current public release state:
 
 - stable GitHub Release: `v0.8.5`;
-- latest lightweight prerelease: `v0.8.10`;
+- latest lightweight prerelease: `v0.8.12`;
 - stable assets: Linux AppImage/`.deb`/`.rpm`, universal macOS, Windows
   NSIS/MSI, and Tauri updater metadata;
 - lightweight prerelease assets: Linux AppImage/`.deb`/`.rpm` only.
