@@ -108,7 +108,7 @@ Sources:
 - https://docs.github.com/en/copilot/concepts/context/mcp
 - https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp-in-your-ide/extend-copilot-chat-with-mcp
 - https://docs.snowflake.com/en/user-guide/snowflake-copilot-inline
-- https://www.jetbrains.com/help/datagrip/ai-assistant.html
+- https://www.jetbrains.com/help/datagrip/ai-assistant-in-jetbrains-ides.html
 
 ## Research Notes
 

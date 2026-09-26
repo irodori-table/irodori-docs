@@ -720,7 +720,7 @@ select * from irodori_smoke.customers limit 10;
 References:
 
 - Apache Iceberg catalog configuration: <https://iceberg.apache.org/docs/latest/configuration/>
-- Apache Iceberg REST catalog spec: <https://iceberg.apache.org/spec/#rest-catalog-api>
+- Apache Iceberg REST catalog spec: <https://iceberg.apache.org/rest-catalog-spec/>
 - AWS S3 Tables: <https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables.html>
 
 ## Future env-gated integration tests

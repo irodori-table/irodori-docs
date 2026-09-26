@@ -165,9 +165,9 @@ Use these products to identify expected behavior, not to copy protected expressi
 - InfluxDB 3 SQL docs: https://docs.influxdata.com/influxdb3/core/query-data/sql/
 - InfluxDB 3 client libraries: https://docs.influxdata.com/influxdb3/core/reference/client-libraries/v3/
 - Neo4j Browser docs: https://neo4j.com/docs/browser/
-- Neo4j Cypher docs: https://neo4j.com/docs/cypher-manual/current/
+- Neo4j Cypher docs: https://neo4j.com/docs/cypher-manual/current/introduction/
 - DBeaver supported database list: https://dbeaver.com/databases/
-- DataGrip feature reference: https://www.jetbrains.com/datagrip/features/
+- DataGrip feature reference: https://lp.jetbrains.com/datagrip/features-overview/
 - Apache Iceberg spec and REST catalog: https://iceberg.apache.org/spec/ and https://iceberg.apache.org/rest-catalog-spec/
 - AWS S3 Tables (managed Iceberg): https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables.html
 - Snowflake authentication options: https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview and https://docs.snowflake.com/en/user-guide/key-pair-auth

@@ -267,6 +267,6 @@ change:
 - Chocolatey package creation: <https://docs.chocolatey.org/en-us/create/create-packages/>
 - Arch package guidelines: <https://wiki.archlinux.org/title/Arch_package_guidelines>
 - Flathub submission: <https://docs.flathub.org/docs/for-app-authors/submission>
-- Snapcraft release docs: <https://snapcraft.io/docs/releasing-your-app>
+- Snapcraft release docs: <https://snapcraft.io/docs/releasing-your-app/>
 - App Store Connect app information: <https://developer.apple.com/help/app-store-connect/manage-app-information/set-app-information/>
 - Microsoft Store developer account setup: <https://learn.microsoft.com/en-us/windows/apps/publish/partner-center/open-a-developer-account>

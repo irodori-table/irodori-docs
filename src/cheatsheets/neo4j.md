@@ -202,7 +202,7 @@ MATCH ()-[r]->() RETURN DISTINCT type(r) AS relationshipType ORDER BY relationsh
 
 Generated from `knowledge/sources.json`:
 
-- `neo4j-cypher-manual` — https://neo4j.com/docs/cypher-manual/current/
+- `neo4j-cypher-manual` — https://neo4j.com/docs/cypher-manual/current/introduction/
 - `neo4j-browser-docs` — https://neo4j.com/docs/browser/
 - `neo4j-graph-data-science` — https://neo4j.com/docs/graph-data-science/current/
 - `memgraph-docs` — https://memgraph.com/docs
