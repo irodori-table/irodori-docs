@@ -42,6 +42,25 @@ pass the tag explicitly:
 gh release download v0.8.12 --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
 ```
 
+## Package managers
+
+Stable releases also publish a signed APT repository and an AUR package:
+
+```bash
+# Debian / Ubuntu
+curl -fsSL https://irodori-table.github.io/irodori-packages/apt/irodori-archive-keyring.gpg \
+  | sudo tee /usr/share/keyrings/irodori-archive-keyring.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/irodori-archive-keyring.gpg] https://irodori-table.github.io/irodori-packages/apt stable main" \
+  | sudo tee /etc/apt/sources.list.d/irodori.list
+sudo apt update && sudo apt install irodori-table
+
+# Arch Linux
+yay -S irodori-table
+```
+
+Both channels are refreshed only for stable releases; see
+[Distribution & updates](distribution.md) for the full picture.
+
 ## Downloads by OS
 
 | OS | Recommended asset | Notes |
