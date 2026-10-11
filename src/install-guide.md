@@ -3,8 +3,7 @@
 Irodori Table publishes desktop packages from GitHub Releases. The release
 state checked for this guide is:
 
-- latest stable GitHub Release: `v0.8.5`, published on 2026-07-30;
-- latest lightweight prerelease: `v0.8.12`, published on 2026-08-20.
+- latest stable GitHub Release: `v0.11.15`, published on 2026-10-10.
 
 <https://github.com/irodori-table/irodori-table/releases>
 
@@ -39,7 +38,7 @@ To test the newest lightweight prerelease instead of the latest stable release,
 pass the tag explicitly:
 
 ```bash
-gh release download v0.8.12 --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
+gh release download <prerelease-tag> --repo irodori-table/irodori-table --pattern "*.AppImage" --dir "$HOME/Applications"
 ```
 
 ## Package managers
