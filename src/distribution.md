@@ -25,15 +25,18 @@ missing signing credentials no longer block an otherwise complete stable build.
 | Stable Windows/macOS releases | end users | ✅ exists | `v0.8.5` includes Windows NSIS/MSI and a universal macOS DMG/app archive; current platform packages are unsigned |
 | Tauri in-app updater | end users (auto-update) | ✅ exists | `v0.8.5` includes `latest.json` and signed updater artifacts |
 | Terminal package download | Linux users | ✅ exists | use `gh release download` and run the `.AppImage`, or install the `.deb`/`.rpm` |
+| APT repository (Debian/Ubuntu) | Linux users | ✅ exists | signed repository served from `irodori-table.github.io/irodori-packages`; stable releases only |
+| AUR | Arch users | ✅ exists | `irodori-table`, repackaged from the release `.deb`; stable releases only |
 | `cargo install --git` | Rust devs (headless server) | ✅ exists | installs `irodori-server` from `irodori-kit v0.7.5`, not the desktop app |
 | crates.io | Rust devs | ⬜ later | crates.io forbids git/path deps; all `irodori-*` must be published first |
 | Homebrew cask / Scoop / winget | mac/Windows | ⬜ later | manifests auto-bumped from releases |
-| AUR / Flatpak | Linux | ⬜ later | from releases |
+| Flatpak | Linux | ⬜ later | from releases |
 
 Public registration text, support/privacy/disclaimer URLs, and package manager
 channel notes are collected in [store-registration.md](store-registration.md).
-Package-manager manifests are still a future packaging task; do not link to
-template paths until those files exist in `irodori-table`.
+The APT and AUR channels are published by the release workflow; see
+[RELEASING.md](https://github.com/irodori-table/irodori-table/blob/main/RELEASING.md)
+for the signing secrets and how to reproduce a repository locally.
 
 ## Quick terminal install
 
@@ -65,6 +68,39 @@ Check the release notes before installing: a stable release may publish all
 platform packages without platform code signing, and a lightweight prerelease
 does not include macOS, Windows, or updater artifacts.
 
+## Package-manager install (stable releases)
+
+Stable releases also publish a signed APT repository and an AUR package, so
+Debian/Ubuntu and Arch users can install through their package manager instead
+of downloading an AppImage. Both channels are refreshed only for stable
+releases.
+
+### Debian / Ubuntu (APT)
+
+```bash
+curl -fsSL https://irodori-table.github.io/irodori-packages/apt/irodori-archive-keyring.gpg \
+  | sudo tee /usr/share/keyrings/irodori-archive-keyring.gpg >/dev/null
+
+echo "deb [signed-by=/usr/share/keyrings/irodori-archive-keyring.gpg] https://irodori-table.github.io/irodori-packages/apt stable main" \
+  | sudo tee /etc/apt/sources.list.d/irodori.list
+
+sudo apt update
+sudo apt install irodori-table
+```
+
+Supported architectures: `amd64` and `arm64`. The signing key is published at
+`https://irodori-table.github.io/irodori-packages/apt/irodori-archive-keyring.gpg`.
+
+### Arch Linux (AUR)
+
+```bash
+yay -S irodori-table
+# or: paru -S irodori-table
+```
+
+The AUR package repackages the same binaries, desktop entry, and icons as the
+Debian package.
+
 ## On "cargo is fastest"
 
 `cargo install` only installs Rust binaries. It is not a desktop app installer:
@@ -92,5 +128,6 @@ The old `irodori-table` repo command is no longer correct because
    unsigned packages when those credentials are absent.
 4. **Keep desktop terminal installs package-based** with `gh release download`;
    keep `cargo install` scoped to the `irodori-kit` headless server.
-5. **Package managers** (brew/scoop/winget/AUR/Flatpak) once the stable assets
-   and checksums are durable enough for manifests.
+5. **Remaining package managers** (brew/scoop/winget/Flatpak) once the stable
+   assets and checksums are durable enough for manifests. Debian/Ubuntu (APT)
+   and Arch (AUR) are already published from stable releases.
